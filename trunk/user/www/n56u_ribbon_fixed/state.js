@@ -715,7 +715,25 @@ function submit_language(){
 function logout(){
 	if(!confirm('<#JS_logout#>'))
 		return;
-	setTimeout('location = "Logout.asp";', 1);
+	// setTimeout('location = "Logout.asp";', 1);
+
+	// 2024-03-27 by re1ve
+	// 直接退出，1秒后跳回登录页
+	var xmlhttp;
+	try{
+		if (window.XMLHttpRequest)
+			xmlhttp=new XMLHttpRequest();
+		else
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}catch (e){
+		xmlhttp=null;
+	}
+	if (xmlhttp != null){
+		xmlhttp.open("HEAD","logout",true,"logout","");
+		xmlhttp.send(null);
+
+		setTimeout('window.location.href = "Login.asp";', 1);
+	}
 }
 
 function reboot(){

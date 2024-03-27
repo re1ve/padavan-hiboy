@@ -355,7 +355,6 @@ function show_banner(L3){
 	bc += '  </tr>\n';
 	bc += '  <tr>\n';
 	bc += '    <td><#General_x_FirmwareVersion_itemname#></td>\n';
-	// 2024-03-27 修改版本号显示格式导致内容过长，修改字体为12px
 	bc += '    <td><a href="/Advanced_FirmwareUpgrade_Content.asp"><span id="firmver" class="time"></span></a></td>\n';
 	bc += '  </tr>\n';
 	bc += '  <tr>\n';

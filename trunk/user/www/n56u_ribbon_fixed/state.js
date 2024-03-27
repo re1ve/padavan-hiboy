@@ -355,7 +355,8 @@ function show_banner(L3){
 	bc += '  </tr>\n';
 	bc += '  <tr>\n';
 	bc += '    <td><#General_x_FirmwareVersion_itemname#></td>\n';
-	bc += '    <td><a href="/Advanced_FirmwareUpgrade_Content.asp"><span id="firmver" class="time"></span></a></td>\n';
+	// 2024-03-27 修改版本号显示格式导致内容过长，修改字体为12px
+	bc += '    <td><a href="/Advanced_FirmwareUpgrade_Content.asp"><span id="firmver" class="time" style="font-size:12px;"></span></a></td>\n';
 	bc += '  </tr>\n';
 	bc += '  <tr>\n';
 	bc += '    <td><button type="button" id="commit_btn" class="btn btn-mini" style="width: 114px; height: 21px; outline:0; '+enabledBtnCommit+'" onclick="commit();"><i class="icon icon-fire"></i>&nbsp;<#CTL_Commit#></button></td>\n';
@@ -637,7 +638,10 @@ function show_top_status(){
 	id_system_info = setTimeout('get_system_info()', 2000);
 	showSystemInfo({busy: 0, user: 0, nice: 0, system: 0, idle: 0, iowait: 0, irq: 0, sirq: 0}, 0);
 
-	showtext($("firmver"), '<% nvram_get_x("",  "firmver_sub"); %>');
+	// showtext($("firmver"), '<% nvram_get_x("",  "firmver_sub"); %>');
+	// 2024-03-27
+	// 修改版本号显示格式：X.X.X.X-XXX-TIME
+	showtext($("firmver"), '<% nvram_get_x("",  "firmver"); %>');
 
 	/*if(sw_mode == "3")
 		$("sw_mode_span").innerHTML = "AP";
